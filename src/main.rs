@@ -5,43 +5,46 @@ pub mod data_models;
 fn main() {
     let firmware_data = data_models::FirmwareData {
         version: "1.32.5".to_string(),
-        build_date: "27-DEC-2024".to_string(),
+        build_date: "28-DEC-2024".to_string(),
     };
 
-    let mut temperature_data = data_models::TemperatureData {
+    let temperature_data = data_models::TemperatureData {
         valid: true,
         temperature: 25.0,
         unit: TempUnits::Celsius,
     };
 
-    let mut gryo_data = data_models::GryoData {
+    let gryo_data = data_models::GryoData {
         valid: true,
         x: 0.0,
         y: 0.0,
         z: 0.0,
+        unit: data_models::GyroUnits::dps,
     };
 
-    let mut magnetometer_data = data_models::MagnetometerData {
+    let magnetometer_data = data_models::MagnetometerData {
         valid: true,
         x: 0.0,
         y: 0.0,
         z: 0.0,
+        unit: data_models::MegnetometerUnits::mG,
     };
 
-    let mut accelerometer_data = data_models::AccelerometerData {
+    let accelerometer_data = data_models::AccelerometerData {
         valid: true,
         x: 0.0,
         y: -9.81,
         z: 0.0,
+		unit: data_models::AccelerometerUnits::mps2,
     };
 
-    let mut pressure_data = data_models::PressureData {
+    let pressure_data = data_models::PressureData {
         valid: true,
         pressure: 1.6,
         unit: PressureUnits::hPa,
     };
 
-    let mut gps_data = data_models::GPSData {
+    let gps_data = data_models::GPSData {
         valid: true,
         latitude: 0.0,
         longitude: 0.0,
@@ -49,8 +52,9 @@ fn main() {
         time: "00:00:00".to_string(),
     };
 
-    let mut data = data_models::Data {
+    let data = data_models::Data {
         timestamp: 0,
+        firmware: firmware_data,
         temperature: temperature_data,
         gryo: gryo_data,
         magnetometer: magnetometer_data,
